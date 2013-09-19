@@ -7,21 +7,23 @@ var semver = require('semver');
 var check = require('check-types');
 var path = require('path');
 
-function checkTopLevelDependencies(folder) {
+function checkTopLevelDependencies(folder, verbose) {
   check.verifyString(folder, 'missing folder string');
 
   var pkg = utils.getPackage(process.cwd());
   var deps = utils.getAllDependencies(pkg);
 
-  console.log(pkg.name + ' declares:\n' +
-    JSON.stringify(deps, null, 2));
+  if (verbose) {
+    console.log(pkg.name + ' declares:\n' +
+      JSON.stringify(deps, null, 2));
+  }
 
-  var missing = Object.keys(deps).some(function (dep) {
-    var declaredVersion = deps[dep];
-    return utils.checkDependency(dep, declaredVersion);
+  var ok = true;
+  _.forOwn(deps, function (declaredVersion, dep) {
+    ok = ok && utils.checkDependency(dep, declaredVersion);
   });
 
-  return !missing;
+  return ok;
 }
 
 if (!module.parent) {
