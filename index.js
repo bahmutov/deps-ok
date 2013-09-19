@@ -20,4 +20,8 @@ if (package.peerDependencies) {
   deps = _.extend(deps, package.peerDependencies);
 }
 
-console.log(package.name + ' declares:\n' + JSON.stringify(deps, null, 2));
+console.log(package.name + ' declares:\n' +
+  JSON.stringify(deps, null, 2));
+Object.keys(deps).forEach(function (dep) {
+  var declaredVersion = deps[dep];
+});
