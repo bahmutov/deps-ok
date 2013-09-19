@@ -35,6 +35,16 @@ I have noticed that in 99% of the time, the problem is missing or out of date to
 
 If **deps-ok** finds a problem, then run `npm install`
 
+## Use as 3<sup>rd</sup> party module
+
+You can use **deps-ok** from another module
+
+```javascript
+npm install deps-ok --save
+var depsOk = require('deps-ok');
+var ok = depsOk(process.cwd(), false /* verbose */);
+```
+
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013
