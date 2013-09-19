@@ -5,7 +5,6 @@ Fast checking of top level dependencies based on version numbers.
 [![NPM info][nodei.co]](https://npmjs.org/package/deps-ok)
 
 [![Build status][ci-image]][ci-url]
-
 [![dependencies][dependencies-image]][dependencies-url]
 [![endorse][endorse-image]][endorse-url]
 
