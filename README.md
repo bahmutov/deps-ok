@@ -2,6 +2,13 @@
 
 Fast checking of top level dependencies based on version numbers.
 
+[![NPM info][nodei.co]](https://npmjs.org/package/deps-ok)
+
+[![Build status][ci-image]][ci-url]
+
+[![dependencies][dependencies-image]][dependencies-url]
+[![endorse][endorse-image]][endorse-url]
+
 ## Problem
 
 Often a project depends on multiple dependencies which can be updated
@@ -37,3 +44,10 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 
 Support: if you find any problems with this module, email / tweet / open issue on Github
 
+[ci-image]: https://travis-ci.org/bahmutov/deps-ok.png?branch=master
+[ci-url]: https://travis-ci.org/bahmutov/deps-ok
+[nodei.co]: https://nodei.co/npm/deps-ok.png?downloads=true
+[dependencies-image]: https://david-dm.org/bahmutov/deps-ok.png
+[dependencies-url]: https://david-dm.org/bahmutov/deps-ok
+[endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
+[endorse-url]: https://coderwall.com/bahmutov
