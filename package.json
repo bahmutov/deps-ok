@@ -1,0 +1,29 @@
+{
+  "name": "deps-ok",
+  "version": "0.0.0",
+  "description": "Fast checking of top level dependencies based on version numbers",
+  "main": "index.js",
+  "bin": "index.js",
+  "preferGlobal": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/deps-ok.git"
+  },
+  "keywords": [
+    "npm",
+    "install",
+    "dependencies",
+    "package",
+    "version"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
+  "dependencies": {
+    "q": "~0.9.7"
+  }
+}
