@@ -16,7 +16,7 @@ the module needs to install / update / uninstall any of its dependencies. This s
 
 ## Solution
 
-I have noticed that in 99% of the time, the problem is missing or out of date top level dependency. Thus there is no need to check everything the way `npm ls` does. Instead **deps-ok** checks if every dependency declared in the *package.json* has the corresponding *node_modules/<name>/package.json* with the compatible version. The installed package is ok if its version is equal to or larger than the declared version.
+I have noticed that in 99% of the time, the problem is missing or out of date top level dependency. Thus there is no need to check everything the way `npm ls` does. Instead **deps-ok** checks if every dependency declared in the *package.json* has the corresponding *node_modules/name/package.json* with the compatible version. The installed package is ok if its version is equal to or larger than the declared version.
 
 ## Use
 
