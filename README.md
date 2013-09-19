@@ -29,7 +29,7 @@ I have noticed that in 99% of the time, the problem is missing or out of date to
     npm install -g deps-ok
     // from the package's root folder execute
     deps-ok
-    // prints error and exits with code 1
+    // prints first found error and exits with code 1
     // if one of the top level dependencies
     // is missing or out of date
 
