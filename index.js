@@ -5,22 +5,34 @@ var semver = require('semver');
 var check = require('check-types');
 var path = require('path');
 var fs = require('fs');
-var packageFilename = path.join(process.cwd(), 'package.json');
-var package = require(packageFilename);
 
-if (!_.isString(package.name)) {
-  throw new Error('missing package name inside ' + packageFilename);
+function getPackage(folder) {
+  var packageFilename = path.join(folder, 'package.json');
+
+  if (!fs.existsSync(packageFilename)) {
+    console.error('cannot find file', packageFilename);
+    return;
+  }
+
+  var pkg = require(packageFilename);
+  if (!_.isString(pkg.name)) {
+    throw new Error('missing package name inside ' + packageFilename);
+  }
+  return pkg;
 }
 
-var deps = {};
-if (package.dependencies) {
-  deps = _.extend(deps, package.dependencies);
-}
-if (package.devDependencies) {
-  deps = _.extend(deps, package.devDependencies);
-}
-if (package.peerDependencies) {
-  deps = _.extend(deps, package.peerDependencies);
+function getAllDependencies(pkg) {
+  var deps = {};
+  if (pkg.dependencies) {
+    deps = _.extend(deps, pkg.dependencies);
+  }
+  if (pkg.devDependencies) {
+    deps = _.extend(deps, pkg.devDependencies);
+  }
+  if (pkg.peerDependencies) {
+    deps = _.extend(deps, pkg.peerDependencies);
+  }
+  return deps;
 }
 
 function cleanVersion(version) {
@@ -37,7 +49,10 @@ function cleanVersion(version) {
   return version;
 }
 
-console.log(package.name + ' declares:\n' +
+var pkg = getPackage(process.cwd());
+var deps = getAllDependencies(pkg);
+
+console.log(pkg.name + ' declares:\n' +
   JSON.stringify(deps, null, 2));
 
 var missing = Object.keys(deps).some(function (dep) {
@@ -46,14 +61,13 @@ var missing = Object.keys(deps).some(function (dep) {
   declaredVersion = cleanVersion(declaredVersion);
   check.verifyString(declaredVersion, 'could not clean up version ' + deps[dep]);
 
-  var depPackage = path.join(process.cwd(), 'node_modules', dep, 'package.json');
-  // console.log('checking', depPackage);
+  var folder = path.join(process.cwd(), 'node_modules', dep);
+  var installedDep = getPackage(folder);
 
-  if (!fs.existsSync(depPackage)) {
+  if (!installedDep) {
     console.error('cannot find module', dep);
     return true;
   }
-  var installedDep = require(depPackage);
   var installedVersion = installedDep.version;
   if (!_.isString(installedVersion)) {
     console.error('cannot version for module', dep);
@@ -64,6 +78,7 @@ var missing = Object.keys(deps).some(function (dep) {
     console.error('invalid version', installedVersion, 'for module', dep);
     return true;
   }
+
   // console.log('comparing', installedVersion, 'with needed', declaredVersion);
   if (semver.lt(installedVersion, declaredVersion)) {
     console.error('module', dep, declaredVersion,
