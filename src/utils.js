@@ -47,7 +47,42 @@ function cleanVersion(version) {
   return version;
 }
 
+function checkDependency(dep, version) {
+  check.verifyString(version, 'missing declared version for ' + dep);
+
+  var declaredVersion = cleanVersion(version);
+  check.verifyString(declaredVersion, 'could not clean up version ' + version);
+
+  var folder = path.join(process.cwd(), 'node_modules', dep);
+  var installedDep = getPackage(folder);
+
+  if (!installedDep) {
+    console.error('ERROR: cannot find module', dep);
+    return true;
+  }
+  var installedVersion = installedDep.version;
+  if (!_.isString(installedVersion)) {
+    console.error('ERROR: cannot version for module', dep);
+    return true;
+  }
+  installedVersion = cleanVersion(installedVersion);
+  if (!semver.valid(installedVersion)) {
+    console.error('ERROR: invalid version', installedVersion, 'for module', dep);
+    return true;
+  }
+
+  // console.log('comparing', installedVersion, 'with needed', declaredVersion);
+  if (semver.lt(installedVersion, declaredVersion)) {
+    console.error('ERROR:', dep, declaredVersion,
+      'needed, but found', installedVersion);
+    return true;
+  }
+
+  return false;
+}
+
 module.exports = {
+  checkDependency: checkDependency,
   getPackage: getPackage,
   getAllDependencies: getAllDependencies,
   cleanVersion: cleanVersion
