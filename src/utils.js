@@ -58,27 +58,27 @@ function checkDependency(dep, version) {
 
   if (!installedDep) {
     console.error('ERROR: cannot find module', dep);
-    return true;
+    return false;
   }
   var installedVersion = installedDep.version;
   if (!_.isString(installedVersion)) {
     console.error('ERROR: cannot version for module', dep);
-    return true;
+    return false;
   }
   installedVersion = cleanVersion(installedVersion);
   if (!semver.valid(installedVersion)) {
     console.error('ERROR: invalid version', installedVersion, 'for module', dep);
-    return true;
+    return false;
   }
 
   // console.log('comparing', installedVersion, 'with needed', declaredVersion);
   if (semver.lt(installedVersion, declaredVersion)) {
     console.error('ERROR:', dep, declaredVersion,
       'needed, but found', installedVersion);
-    return true;
+    return false;
   }
 
-  return false;
+  return true;
 }
 
 module.exports = {
