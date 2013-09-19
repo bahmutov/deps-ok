@@ -24,6 +24,7 @@
   "readmeFilename": "README.md",
   "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
   "dependencies": {
-    "q": "~0.9.7"
+    "q": "~0.9.7",
+    "lodash": "~2.0.0"
   }
 }
