@@ -2,7 +2,8 @@
 
 var _ = require('lodash');
 var path = require('path');
-var packageFilename = path.join(process.cwd(), './package.json');
+var fs = require('fs');
+var packageFilename = path.join(process.cwd(), 'package.json');
 var package = require(packageFilename);
 
 if (!_.isString(package.name)) {
@@ -22,6 +23,22 @@ if (package.peerDependencies) {
 
 console.log(package.name + ' declares:\n' +
   JSON.stringify(deps, null, 2));
-Object.keys(deps).forEach(function (dep) {
+
+var missing = Object.keys(deps).some(function (dep) {
   var declaredVersion = deps[dep];
+  var depPackage = path.join(process.cwd(), 'node_modules', dep, 'package.json');
+  console.log('checking', depPackage);
+
+  if (!fs.existsSync(depPackage)) {
+    console.error('cannot find module', dep);
+    return true;
+  }
+
+  return false;
 });
+
+if (missing) {
+  process.exit(1);
+}
+// every necessary dependency  is installed
+process.exit(0);
