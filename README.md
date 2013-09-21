@@ -20,6 +20,9 @@ integrating this task into grunt pipeline.
     // if one of the top level dependencies
     // is missing or out of date
 
+    deps-ok --verbose
+    // prints declared and installed version numbers
+
 If **deps-ok** finds a problem, then run `npm install`
 
 ## Use as 3<sup>rd</sup> party module

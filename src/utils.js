@@ -47,7 +47,7 @@ function cleanVersion(version) {
   return version;
 }
 
-function checkDependency(dep, version) {
+function checkDependency(dep, version, verbose) {
   check.verifyString(version, 'missing declared version for ' + dep);
 
   var declaredVersion = cleanVersion(version);
@@ -71,7 +71,9 @@ function checkDependency(dep, version) {
     return false;
   }
 
-  // console.log('comparing', installedVersion, 'with needed', declaredVersion);
+  if (verbose) {
+    console.log(dep, 'needed', declaredVersion, 'installed', installedVersion);
+  }
   if (semver.lt(installedVersion, declaredVersion)) {
     console.error('ERROR:', dep, declaredVersion,
       'needed, but found', installedVersion);

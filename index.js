@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var argv = require('optimist').argv;
+
 var utils = require('./src/utils');
 
 var _ = require('lodash');
@@ -20,14 +22,15 @@ function checkTopLevelDependencies(folder, verbose) {
 
   var ok = true;
   _.forOwn(deps, function (declaredVersion, dep) {
-    ok = ok && utils.checkDependency(dep, declaredVersion);
+    ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
   });
 
   return ok;
 }
 
 if (!module.parent) {
-  var ok = checkTopLevelDependencies(process.cwd());
+  var verbose = argv.verbose;
+  var ok = checkTopLevelDependencies(process.cwd(), verbose);
   if (ok) {
     process.exit(0);
   } else {
