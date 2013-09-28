@@ -21,15 +21,20 @@ function getPackage(folder) {
 
 function getAllDependencies(pkg) {
   var deps = {};
-  if (pkg.dependencies) {
-    deps = _.extend(deps, pkg.dependencies);
-  }
-  if (pkg.devDependencies) {
-    deps = _.extend(deps, pkg.devDependencies);
-  }
-  if (pkg.peerDependencies) {
-    deps = _.extend(deps, pkg.peerDependencies);
-  }
+  var properties = [
+    'dependencies', 'devDependencies', 'peerDependencies'
+  ];
+  properties.forEach(function (name) {
+    if (!pkg[name]) {
+      return;
+    }
+
+    var common = _.intersection(_.keys(deps), _.keys(pkg[name]));
+    if (common.length) {
+      throw new Error('duplicate properties ' + common);
+    }
+    deps = _.extend(deps, pkg[name]);
+  });
   return deps;
 }
 

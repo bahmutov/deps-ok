@@ -6,7 +6,7 @@
   "bin": "index.js",
   "preferGlobal": "true",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,8 @@
     "check-types": "~0.6.4",
     "optimist": "~0.6.0",
     "npm-utils": "0.0.4"
+  },
+  "devDependencies": {
+    "gt": "~0.8.12"
   }
 }
