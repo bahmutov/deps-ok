@@ -31,7 +31,7 @@ function getAllDependencies(pkg) {
 
     var common = _.intersection(_.keys(deps), _.keys(pkg[name]));
     if (common.length) {
-      throw new Error('duplicate properties ' + common);
+      throw new Error('duplicate properties found: ' + common);
     }
     deps = _.extend(deps, pkg[name]);
   });
