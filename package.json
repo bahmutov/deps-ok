@@ -1,6 +1,6 @@
 {
   "name": "deps-ok",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fast checking of top level dependencies based on version numbers",
   "main": "index.js",
   "bin": "index.js",
@@ -28,6 +28,7 @@
     "lodash": "~2.1.0",
     "semver": "~2.1.0",
     "check-types": "~0.6.4",
-    "optimist": "~0.6.0"
+    "optimist": "~0.6.0",
+    "npm-utils": "0.0.4"
   }
 }

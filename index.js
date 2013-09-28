@@ -7,6 +7,7 @@ var _ = require('lodash');
 var semver = require('semver');
 var check = require('check-types');
 var path = require('path');
+var isUrl = require('npm-utils').isUrl;
 
 function checkTopLevelDependencies(folder, verbose) {
   check.verifyString(folder, 'missing folder string');
@@ -21,6 +22,10 @@ function checkTopLevelDependencies(folder, verbose) {
 
   var ok = true;
   _.forOwn(deps, function (declaredVersion, dep) {
+    if (isUrl(declaredVersion)) {
+      console.log('skipping git url', declaredVersion);
+      return;
+    }
     ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
   });
 
