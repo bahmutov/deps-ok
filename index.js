@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var argv = require('optimist').argv;
-
 var utils = require('./src/utils');
 
 var _ = require('lodash');
