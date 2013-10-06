@@ -25,9 +25,9 @@
   "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
   "dependencies": {
     "q": "~0.9.7",
-    "lodash": "~2.1.0",
+    "lodash": "~2.2.1",
     "semver": "~2.1.0",
-    "check-types": "~0.6.4",
+    "check-types": "~0.6.5",
     "optimist": "~0.6.0",
     "npm-utils": "0.0.4"
   },
