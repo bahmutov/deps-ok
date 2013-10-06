@@ -1,6 +1,6 @@
 {
   "name": "deps-ok",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Fast checking of top level dependencies based on version numbers",
   "main": "index.js",
   "bin": "index.js",
@@ -8,6 +8,7 @@
   "scripts": {
     "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output"
   },
+  "pre-commit": "npm test",
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/deps-ok.git"
@@ -32,6 +33,7 @@
     "npm-utils": "0.0.4"
   },
   "devDependencies": {
-    "gt": "~0.8.12"
+    "gt": "~0.8.12",
+    "pre-git": "0.0.11"
   }
 }
