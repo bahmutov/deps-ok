@@ -6,7 +6,7 @@
   "bin": "index.js",
   "preferGlobal": "true",
   "scripts": {
-    "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output"
+    "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output > cinnamon.log"
   },
   "pre-commit": "npm test",
   "repository": {
