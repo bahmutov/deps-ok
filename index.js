@@ -10,7 +10,7 @@ var path = require('path');
 var isUrl = require('npm-utils').isUrl;
 
 function checkTopLevelDependencies(folder, verbose) {
-  check.verifyString(folder, 'missing folder string');
+  check.verify.string(folder, 'missing folder string');
 
   var pkg = utils.getPackage(process.cwd());
   var deps = utils.getAllDependencies(pkg);

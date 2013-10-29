@@ -39,7 +39,7 @@ function getAllDependencies(pkg) {
 }
 
 function cleanVersion(version) {
-  check.verifyString(version, 'expecting version string');
+  check.verify.string(version, 'expecting version string');
 
   version = version.trim();
   version = version.replace('~', '');
@@ -53,10 +53,10 @@ function cleanVersion(version) {
 }
 
 function checkDependency(dep, version, verbose) {
-  check.verifyString(version, 'missing declared version for ' + dep);
+  check.verify.string(version, 'missing declared version for ' + dep);
 
   var declaredVersion = cleanVersion(version);
-  check.verifyString(declaredVersion, 'could not clean up version ' + version);
+  check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
   var folder = path.join(process.cwd(), 'node_modules', dep);
   var installedDep = getPackage(folder);
