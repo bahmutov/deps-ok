@@ -1,12 +1,12 @@
 {
   "name": "deps-ok",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Fast checking of top level dependencies based on version numbers",
   "main": "index.js",
   "bin": "index.js",
   "preferGlobal": "true",
   "scripts": {
-    "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output > cinnamon.log"
+    "test": "node index.js && node ./node_modules/gt src/test/*.coffee --output"
   },
   "pre-commit": "npm test",
   "repository": {
