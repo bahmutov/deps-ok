@@ -30,10 +30,10 @@
     "semver": "~2.2.1",
     "check-types": "~1.1.0",
     "optimist": "~0.6.0",
-    "npm-utils": "0.0.5"
+    "npm-utils": "0.0.6"
   },
   "devDependencies": {
     "gt": "~0.8.15",
-    "pre-git": "0.0.11"
+    "pre-git": "0.0.13"
   }
 }
