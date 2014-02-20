@@ -4,13 +4,11 @@ var argv = require('optimist').argv;
 var utils = require('./src/utils');
 
 var _ = require('lodash');
-var semver = require('semver');
-var check = require('check-types');
-var path = require('path');
+var verify = require('check-types').verify;
 var isUrl = require('npm-utils').isUrl;
 
-function checkTopLevelDependencies(folder, verbose) {
-  check.verify.string(folder, 'missing folder string');
+function checkTopLevelNpmDependencies(folder, verbose) {
+  verify.string(folder, 'missing folder string');
 
   var pkg = utils.getPackage(process.cwd());
   var deps = utils.getAllDependencies(pkg);
@@ -34,7 +32,7 @@ function checkTopLevelDependencies(folder, verbose) {
 
 if (!module.parent) {
   var verbose = argv.verbose;
-  var ok = checkTopLevelDependencies(process.cwd(), verbose);
+  var ok = checkTopLevelNpmDependencies(process.cwd(), verbose);
   if (ok) {
     process.exit(0);
   } else {
@@ -43,4 +41,4 @@ if (!module.parent) {
   return;
 }
 
-module.exports = checkTopLevelDependencies;
+module.exports = checkTopLevelNpmDependencies;
