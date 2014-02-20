@@ -1,6 +1,6 @@
 # deps-ok
 
-Fast checking of top level dependencies based on version numbers.
+Fast checking of top level NPM and Bower dependencies based on version numbers.
 
 [![NPM info][nodei.co]](https://npmjs.org/package/deps-ok)
 
@@ -23,7 +23,9 @@ integrating this task into grunt pipeline.
     deps-ok --verbose
     // prints declared and installed version numbers
 
-If **deps-ok** finds a problem, then run `npm install`
+Checks both dependencies listed in your *package.json* and *bower.json*
+
+If **deps-ok** finds a problem, then run `npm install` or `bower install`
 
 ## Use as 3<sup>rd</sup> party module
 
