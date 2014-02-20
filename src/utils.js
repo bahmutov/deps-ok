@@ -52,7 +52,7 @@ function cleanVersion(version) {
   return version;
 }
 
-function checkDependency(dep, version, verbose) {
+function checkNpmDependency(dep, version, verbose) {
   check.verify.string(version, 'missing declared version for ' + dep);
 
   var declaredVersion = cleanVersion(version);
@@ -89,7 +89,7 @@ function checkDependency(dep, version, verbose) {
 }
 
 module.exports = {
-  checkDependency: checkDependency,
+  checkNpmDependency: checkNpmDependency,
   getPackage: getPackage,
   getAllDependencies: getAllDependencies,
   cleanVersion: cleanVersion

@@ -20,7 +20,7 @@ function checkTopLevelNpmDependencies(folder, verbose) {
       console.log('skipping git url', declaredVersion);
       return;
     }
-    ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
+    ok = ok && utils.checkNpmDependency(dep, declaredVersion, verbose);
   });
 
   return ok;
