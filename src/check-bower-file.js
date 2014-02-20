@@ -20,7 +20,7 @@ function checkBowerFile(filename, verbose) {
       console.log('skipping git url', declaredVersion);
       return;
     }
-    // ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
+    ok = ok && utils.checkBowerDependency(dep, declaredVersion, verbose);
   });
 
   return ok;

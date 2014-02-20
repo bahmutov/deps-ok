@@ -15,4 +15,4 @@ gt.test 'check function', ->
 
 gt.test 'test itself via check', ->
   ok = check bowerFilename, true
-  gt.ok ok, 'all deps are up to date'
+  gt.ok !ok, 'dependencies are not installed'

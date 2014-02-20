@@ -96,7 +96,7 @@ function checkBowerDependency(dep, version, verbose) {
   check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
   var filename = join(process.cwd(), 'bower_components', dep, 'bower.json');
-  var installedDep = getPackage(folder);
+  var installedDep = getPackage(filename);
 
   if (!installedDep) {
     console.error('ERROR: cannot find module', dep);
@@ -127,6 +127,7 @@ function checkBowerDependency(dep, version, verbose) {
 
 module.exports = {
   checkNpmDependency: checkNpmDependency,
+  checkBowerDependency: checkBowerDependency,
   getPackage: getPackage,
   getAllDependencies: getAllDependencies,
   cleanVersion: cleanVersion
