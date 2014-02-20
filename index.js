@@ -33,11 +33,7 @@ function checkTopLevelNpmDependencies(folder, verbose) {
 if (!module.parent) {
   var verbose = argv.verbose;
   var ok = checkTopLevelNpmDependencies(process.cwd(), verbose);
-  if (ok) {
-    process.exit(0);
-  } else {
-    process.exit(1);
-  }
+  process.exit(ok ? 0 : 1);
   return;
 }
 
