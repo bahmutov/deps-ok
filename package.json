@@ -9,7 +9,7 @@
     "test": "npm run itself && npm run e2e",
     "itself": "node index.js",
     "unit": "node ./node_modules/gt src/test/*.coffee --output",
-    "e2e": "node ./node_modules/gt e2e/*.coffee --output"
+    "e2e": "node ./node_modules/gt test/*.coffee --output"
   },
   "pre-commit": "npm test",
   "repository": {

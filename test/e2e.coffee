@@ -1,6 +1,9 @@
+join = require('path').join
+check = require '..'
+
 gt.module 'e2e NPM tests',
   setup: ->
-    process.chdir '..'
+    process.chdir join(__dirname, '..')
   teardown: ->
     process.chdir __dirname
 
