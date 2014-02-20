@@ -32,8 +32,7 @@
     "lodash": "~2.4.1",
     "semver": "~2.2.1",
     "check-types": "~1.1.1",
-    "optimist": "~0.6.1",
-    "npm-utils": "0.0.6"
+    "optimist": "~0.6.1"
   },
   "devDependencies": {
     "gt": "~0.8.33",

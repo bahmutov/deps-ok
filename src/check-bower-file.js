@@ -1,7 +1,7 @@
 var utils = require('./utils');
-// var _ = require('lodash');
-var verify = require('check-types').verify;
-// var isUrl = require('npm-utils').isUrl;
+var _ = require('lodash');
+var check = require('check-types');
+var verify = check.verify;
 
 function checkBowerFile(filename, verbose) {
   verify.unemptyString(filename, 'missing bower filename');
@@ -15,15 +15,14 @@ function checkBowerFile(filename, verbose) {
   }
 
   var ok = true;
-  /*
   _.forOwn(deps, function (declaredVersion, dep) {
-    if (isUrl(declaredVersion)) {
+    if (check.webUrl(declaredVersion)) {
       console.log('skipping git url', declaredVersion);
       return;
     }
-    ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
+    // ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
   });
-  */
+
   return ok;
 }
 
