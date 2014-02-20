@@ -1,13 +1,14 @@
 var _ = require('lodash');
 var semver = require('semver');
 var check = require('check-types');
-var path = require('path');
-var fs = require('fs');
+var verify = check.verify;
+var join = require('path').join;
+var exists = require('fs').existsSync;
 
 function getPackage(folder) {
-  var packageFilename = path.join(folder, 'package.json');
+  var packageFilename = join(folder, 'package.json');
 
-  if (!fs.existsSync(packageFilename)) {
+  if (!exists(packageFilename)) {
     console.error('cannot find file', packageFilename);
     return;
   }
@@ -39,7 +40,7 @@ function getAllDependencies(pkg) {
 }
 
 function cleanVersion(version) {
-  check.verify.string(version, 'expecting version string');
+  verify.unemptyString(version, 'expecting version string');
 
   version = version.trim();
   version = version.replace('~', '');
@@ -53,12 +54,12 @@ function cleanVersion(version) {
 }
 
 function checkNpmDependency(dep, version, verbose) {
-  check.verify.string(version, 'missing declared version for ' + dep);
+  verify.unemptyString(version, 'missing declared version for ' + dep);
 
   var declaredVersion = cleanVersion(version);
   check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
-  var folder = path.join(process.cwd(), 'node_modules', dep);
+  var folder = join(process.cwd(), 'node_modules', dep);
   var installedDep = getPackage(folder);
 
   if (!installedDep) {
