@@ -95,7 +95,22 @@ function checkBowerDependency(dep, version, verbose) {
   var declaredVersion = cleanVersion(version);
   check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
-  var filename = join(process.cwd(), 'bower_components', dep, 'bower.json');
+  var folder = join(process.cwd(), 'bower_components', dep);
+  if (!exists(folder)) {
+    console.error('ERROR: cannot find folder', folder);
+    return false;
+  }
+
+  var filename;
+  filename = join(folder, 'bower.json');
+  if (!exists(filename)) {
+    // some bower components use bower.json, some component.json
+    filename = join(folder, 'component.json');
+  }
+  if (!exists(filename)) {
+    console.error('ERROR: cannot find bower component json file in folder', folder);
+    return false;
+  }
   var installedDep = getPackage(filename);
 
   if (!installedDep) {
