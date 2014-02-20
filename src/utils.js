@@ -5,8 +5,8 @@ var verify = check.verify;
 var join = require('path').join;
 var exists = require('fs').existsSync;
 
-function getPackage(folder) {
-  var packageFilename = join(folder, 'package.json');
+function getPackage(packageFilename) {
+  verify.unemptyString(packageFilename, 'missing package filename');
 
   if (!exists(packageFilename)) {
     console.error('cannot find file', packageFilename);
@@ -59,7 +59,43 @@ function checkNpmDependency(dep, version, verbose) {
   var declaredVersion = cleanVersion(version);
   check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
-  var folder = join(process.cwd(), 'node_modules', dep);
+  var filename = join(process.cwd(), 'node_modules', dep, 'package.json');
+  var installedDep = getPackage(filename);
+
+  if (!installedDep) {
+    console.error('ERROR: cannot find module', dep);
+    return false;
+  }
+  var installedVersion = installedDep.version;
+  if (!_.isString(installedVersion)) {
+    console.error('ERROR: cannot version for module', dep);
+    return false;
+  }
+  installedVersion = cleanVersion(installedVersion);
+  if (!semver.valid(installedVersion)) {
+    console.error('ERROR: invalid version', installedVersion, 'for module', dep);
+    return false;
+  }
+
+  if (verbose) {
+    console.log(dep, 'needed', declaredVersion, 'installed', installedVersion);
+  }
+  if (semver.lt(installedVersion, declaredVersion)) {
+    console.error('ERROR:', dep, declaredVersion,
+      'needed, but found', installedVersion);
+    return false;
+  }
+
+  return true;
+}
+
+function checkBowerDependency(dep, version, verbose) {
+  verify.unemptyString(version, 'missing declared version for ' + dep);
+
+  var declaredVersion = cleanVersion(version);
+  check.verify.string(declaredVersion, 'could not clean up version ' + version);
+
+  var filename = join(process.cwd(), 'bower_components', dep, 'bower.json');
   var installedDep = getPackage(folder);
 
   if (!installedDep) {

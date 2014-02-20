@@ -2,11 +2,13 @@ var utils = require('./utils');
 var _ = require('lodash');
 var check = require('check-types');
 var verify = check.verify;
+var join = require('path').join;
 
 function checkTopLevelNpmDependencies(folder, verbose) {
   verify.unemptyString(folder, 'missing folder string');
 
-  var pkg = utils.getPackage(process.cwd());
+  var filename = join(process.cwd(), 'package.json');
+  var pkg = utils.getPackage(filename);
   var deps = utils.getAllDependencies(pkg);
 
   if (verbose) {
