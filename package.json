@@ -29,11 +29,11 @@
     "lodash": "~2.4.1",
     "semver": "~2.2.1",
     "check-types": "~1.1.1",
-    "optimist": "~0.6.0",
+    "optimist": "~0.6.1",
     "npm-utils": "0.0.6"
   },
   "devDependencies": {
-    "gt": "~0.8.29",
-    "pre-git": "0.0.14"
+    "gt": "~0.8.33",
+    "pre-git": "0.0.15"
   }
 }
