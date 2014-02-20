@@ -1,20 +1,21 @@
 var utils = require('./utils');
-var _ = require('lodash');
+// var _ = require('lodash');
 var verify = require('check-types').verify;
-var isUrl = require('npm-utils').isUrl;
+// var isUrl = require('npm-utils').isUrl;
 
-function checkTopLevelNpmDependencies(folder, verbose) {
-  verify.unemptyString(folder, 'missing folder string');
+function checkBowerFile(filename, verbose) {
+  verify.unemptyString(filename, 'missing bower filename');
 
-  var pkg = utils.getPackage(process.cwd());
+  var pkg = require(filename);
   var deps = utils.getAllDependencies(pkg);
 
   if (verbose) {
-    console.log(pkg.name + ' declares:\n' +
+    console.log('bower ' + pkg.name + ' declares:\n' +
       JSON.stringify(deps, null, 2));
   }
 
   var ok = true;
+  /*
   _.forOwn(deps, function (declaredVersion, dep) {
     if (isUrl(declaredVersion)) {
       console.log('skipping git url', declaredVersion);
@@ -22,8 +23,8 @@ function checkTopLevelNpmDependencies(folder, verbose) {
     }
     ok = ok && utils.checkDependency(dep, declaredVersion, verbose);
   });
-
+  */
   return ok;
 }
 
-module.exports = checkTopLevelNpmDependencies;
+module.exports = checkBowerFile;
