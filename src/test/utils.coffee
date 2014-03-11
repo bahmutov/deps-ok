@@ -1,6 +1,21 @@
+cleanVersion = require('../utils').cleanVersion
+
+gt.module 'clean version'
+
+gt.test '^ symbol', ->
+  version = cleanVersion '^0.1.1'
+  gt.equal version, '0.1.1', 'removed ^ symbol'
+
 getAllDependencies = require('../utils').getAllDependencies
 
 gt.module 'getAllDependencies'
+
+gt.test '^ symbol', ->
+  pkg =
+    dependencies:
+      foo: '^0.1.0'
+  deps = getAllDependencies pkg
+  gt.equal deps.foo, '^0.1.0'
 
 gt.test '3 types', ->
   pkg =

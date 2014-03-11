@@ -43,7 +43,7 @@ function cleanVersion(version) {
   verify.unemptyString(version, 'expecting version string');
 
   version = version.trim();
-  version = version.replace('~', '');
+  version = version.replace('~', '').replace('^', '');
   var twoDigitVersion = /^\d+\.\d+$/;
   if (twoDigitVersion.test(version)) {
     version += '.0';
