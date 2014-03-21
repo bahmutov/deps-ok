@@ -16,7 +16,7 @@ function checkBowerFile(filename, verbose) {
 
   var ok = true;
   _.forOwn(deps, function (declaredVersion, dep) {
-    if (check.webUrl(declaredVersion)) {
+    if (check.webUrl(declaredVersion) || check.gitUrl(declaredVersion)) {
       console.log('skipping git url', declaredVersion);
       return;
     }
