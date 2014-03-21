@@ -56,9 +56,6 @@ function cleanVersion(version) {
 function checkNpmDependency(dep, version, verbose) {
   verify.unemptyString(version, 'missing declared version for ' + dep);
 
-  var declaredVersion = cleanVersion(version);
-  check.verify.string(declaredVersion, 'could not clean up version ' + version);
-
   var filename = join(process.cwd(), 'node_modules', dep, 'package.json');
   var installedDep = getPackage(filename);
 
@@ -78,10 +75,10 @@ function checkNpmDependency(dep, version, verbose) {
   }
 
   if (verbose) {
-    console.log(dep, 'needed', declaredVersion, 'installed', installedVersion);
+    console.log(dep, 'needed', version, 'installed', installedVersion);
   }
-  if (semver.lt(installedVersion, declaredVersion)) {
-    console.error('ERROR:', dep, declaredVersion,
+  if (semver.ltr(installedVersion, version)) {
+    console.error('ERROR:', dep, version,
       'needed, but found', installedVersion);
     return false;
   }
@@ -91,9 +88,6 @@ function checkNpmDependency(dep, version, verbose) {
 
 function checkBowerDependency(dep, version, verbose) {
   verify.unemptyString(version, 'missing declared version for ' + dep);
-
-  var declaredVersion = cleanVersion(version);
-  check.verify.string(declaredVersion, 'could not clean up version ' + version);
 
   var folder = join(process.cwd(), 'bower_components', dep);
   if (!exists(folder)) {
@@ -129,10 +123,10 @@ function checkBowerDependency(dep, version, verbose) {
   }
 
   if (verbose) {
-    console.log(dep, 'needed', declaredVersion, 'installed', installedVersion);
+    console.log(dep, 'needed', version, 'installed', installedVersion);
   }
-  if (semver.lt(installedVersion, declaredVersion)) {
-    console.error('ERROR:', dep, declaredVersion,
+  if (semver.ltr(installedVersion, version)) {
+    console.error('ERROR:', dep, version,
       'needed, but found', installedVersion);
     return false;
   }
