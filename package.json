@@ -1,6 +1,6 @@
 {
   "name": "deps-ok",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Fast checking of top level dependencies based on version numbers",
   "main": "index.js",
   "bin": "index.js",

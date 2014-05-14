@@ -1,7 +1,7 @@
 var utils = require('./utils');
 var _ = require('lodash');
-var check = require('check-types');
-var verify = check.verify;
+var verify = require('check-types').verify;
+var isSupportedVersionFormat = require('./is-supported-version-format');
 
 function checkBowerFile(filename, verbose) {
   verify.unemptyString(filename, 'missing bower filename');
@@ -16,7 +16,7 @@ function checkBowerFile(filename, verbose) {
 
   var ok = true;
   _.forOwn(deps, function (declaredVersion, dep) {
-    if (check.webUrl(declaredVersion) || check.gitUrl(declaredVersion)) {
+    if (!isSupportedVersionFormat(declaredVersion)) {
       console.log('skipping git url', declaredVersion);
       return;
     }
