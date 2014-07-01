@@ -1,21 +1,33 @@
 {
   "name": "deps-ok",
-  "version": "0.4.1",
   "description": "Fast checking of top level dependencies based on version numbers",
-  "main": "index.js",
+  "version": "0.5.0",
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
-  "preferGlobal": "true",
-  "scripts": {
-    "test": "npm run itself && npm run unit && npm run e2e",
-    "itself": "node index.js",
-    "unit": "node ./node_modules/gt src/test/**/*.coffee --output",
-    "e2e": "node ./node_modules/gt test/*.coffee --output"
+  "bugs": {
+    "url": "https://github.com/bahmutov/deps-ok/issues"
   },
-  "pre-commit": "npm test",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bahmutov/deps-ok.git"
+  "contributors": [],
+  "dependencies": {
+    "check-types": "1.3.1",
+    "lodash": "2.4.1",
+    "optimist": "0.6.1",
+    "q": "2.0.2",
+    "semver": "2.3.1"
   },
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-jshint": "0.10.0",
+    "grunt-nice-package": "0.9.1",
+    "gt": "0.8.38",
+    "jshint-summary": "0.4.0",
+    "pre-git": "0.0.16"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
+  "homepage": "https://github.com/bahmutov/deps-ok",
   "keywords": [
     "npm",
     "install",
@@ -23,19 +35,19 @@
     "package",
     "version"
   ],
-  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
+  "main": "index.js",
+  "pre-commit": "npm test",
+  "preferGlobal": true,
   "readmeFilename": "README.md",
-  "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
-  "dependencies": {
-    "q": "^2.0.2",
-    "lodash": "~2.4.1",
-    "semver": "^2.3.1",
-    "check-types": "^1.3.1",
-    "optimist": "~0.6.1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/deps-ok.git"
   },
-  "devDependencies": {
-    "gt": "^0.8.38",
-    "pre-git": "0.0.16"
+  "scripts": {
+    "test": "npm run itself && npm run unit && npm run e2e",
+    "itself": "node index.js",
+    "unit": "node ./node_modules/gt src/test/**/*.coffee --output",
+    "e2e": "node ./node_modules/gt test/*.coffee --output"
   }
 }
