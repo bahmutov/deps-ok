@@ -6,7 +6,7 @@ Fast checking of top level NPM and Bower dependencies based on version numbers.
 
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
-[![endorse][endorse-image]][endorse-url]
+[![devdependencies][deps-ok-devdependencies-image] ][deps-ok-devdependencies-url]
 
 There is also [grunt-deps-ok](https://github.com/bahmutov/grunt-deps-ok) for
 integrating this task into grunt pipeline.
@@ -50,5 +50,7 @@ Support: if you find any problems with this module, email / tweet / open issue o
 [nodei.co]: https://nodei.co/npm/deps-ok.png?downloads=true
 [dependencies-image]: https://david-dm.org/bahmutov/deps-ok.png
 [dependencies-url]: https://david-dm.org/bahmutov/deps-ok
+[deps-ok-devdependencies-image]: https://david-dm.org/bahmutov/deps-ok/dev-status.png
+[deps-ok-devdependencies-url]: https://david-dm.org/bahmutov/deps-ok#info=devDependencies
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
