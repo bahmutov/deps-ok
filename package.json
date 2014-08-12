@@ -1,7 +1,7 @@
 {
   "name": "deps-ok",
   "description": "Fast checking of top level dependencies based on version numbers",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
   "bugs": {
