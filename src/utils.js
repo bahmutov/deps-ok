@@ -69,6 +69,7 @@ function checkNpmDependency(folder, dep, version, verbose) {
     console.error('ERROR: cannot version for module', dep);
     return false;
   }
+
   installedVersion = cleanVersion(installedVersion);
   if (!semver.valid(installedVersion)) {
     console.error('ERROR: invalid version', installedVersion, 'for module', dep);

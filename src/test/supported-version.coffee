@@ -10,3 +10,4 @@ gt.test 'regular versions', ->
 gt.test 'unsupported urls', ->
   gt.ok !isSupported('http://somewhere/repo'), 'http'
   gt.ok !isSupported('git@github.com:bahmutov/angular-minicolors.git'), 'git@'
+  gt.ok !isSupported('git://gh.com/foo/bar#30030')
