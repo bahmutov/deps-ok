@@ -1,7 +1,9 @@
 join = require('path').join
 exists = require('fs').existsSync
 check = require '../check-bower-file'
-bowerFilename = join __dirname, 'bower-test/bower.json'
+
+testFolder = join __dirname, 'bower-test'
+bowerFilename = join testFolder, 'bower.json'
 
 gt.module 'running as parent tests',
   setup: ->
@@ -14,5 +16,5 @@ gt.test 'check function', ->
   gt.ok exists(bowerFilename), 'bower file', bowerFilename, 'exists'
 
 gt.test 'test itself via check', ->
-  ok = check bowerFilename, true
+  ok = check testFolder, bowerFilename, true
   gt.ok !ok, 'dependencies are not installed'

@@ -8,7 +8,7 @@ var isSupportedVersionFormat = require('./is-supported-version-format');
 function checkTopLevelNpmDependencies(folder, verbose) {
   verify.unemptyString(folder, 'missing folder string');
 
-  var filename = join(process.cwd(), 'package.json');
+  var filename = join(folder, 'package.json');
   var pkg = utils.getPackage(filename);
   var deps = utils.getAllDependencies(pkg);
 
@@ -23,7 +23,7 @@ function checkTopLevelNpmDependencies(folder, verbose) {
       console.log('skipping git url', declaredVersion);
       return;
     }
-    ok = ok && utils.checkNpmDependency(dep, declaredVersion, verbose);
+    ok = ok && utils.checkNpmDependency(folder, dep, declaredVersion, verbose);
   });
 
   return ok;

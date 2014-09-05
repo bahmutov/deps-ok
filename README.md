@@ -23,6 +23,9 @@ integrating this task into grunt pipeline.
     deps-ok --verbose
     // prints declared and installed version numbers
 
+    deps-ok --filename path/to/package.json
+    // checks give package.json (not in this folder)
+
 Checks both dependencies listed in your *package.json* and *bower.json*
 
 If **deps-ok** finds a problem, then run `npm install` or `bower install`

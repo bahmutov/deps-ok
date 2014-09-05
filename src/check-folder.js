@@ -16,7 +16,7 @@ function checkDependenciesInFolder(folder, verbose) {
 
   var bowerFilename = join(folder, 'bower.json');
   if (exists(bowerFilename)) {
-    if (!checkBower(bowerFilename, verbose)) {
+    if (!checkBower(folder, bowerFilename, verbose)) {
       return false;
     }
   }

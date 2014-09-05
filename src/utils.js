@@ -53,10 +53,11 @@ function cleanVersion(version) {
   return version;
 }
 
-function checkNpmDependency(dep, version, verbose) {
+function checkNpmDependency(folder, dep, version, verbose) {
+  verify.unemptyString(folder, 'expected folder string, got ' + folder);
   verify.unemptyString(version, 'missing declared version for ' + dep);
 
-  var filename = join(process.cwd(), 'node_modules', dep, 'package.json');
+  var filename = join(folder, 'node_modules', dep, 'package.json');
   var installedDep = getPackage(filename);
 
   if (!installedDep) {
@@ -86,10 +87,11 @@ function checkNpmDependency(dep, version, verbose) {
   return true;
 }
 
-function checkBowerDependency(dep, version, verbose) {
+function checkBowerDependency(folder, dep, version, verbose) {
+  verify.unemptyString(folder, 'expected folder string, got ' + folder);
   verify.unemptyString(version, 'missing declared version for ' + dep);
 
-  var folder = join(process.cwd(), 'bower_components', dep);
+  var folder = join(folder, 'bower_components', dep);
   if (!exists(folder)) {
     console.error('ERROR: cannot find folder', folder);
     return false;

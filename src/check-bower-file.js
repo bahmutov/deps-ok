@@ -3,7 +3,8 @@ var _ = require('lodash');
 var verify = require('check-types').verify;
 var isSupportedVersionFormat = require('./is-supported-version-format');
 
-function checkBowerFile(filename, verbose) {
+function checkBowerFile(folder, filename, verbose) {
+  verify.unemptyString(folder, 'missing bower folder');
   verify.unemptyString(filename, 'missing bower filename');
 
   var pkg = require(filename);
@@ -20,7 +21,7 @@ function checkBowerFile(filename, verbose) {
       console.log('skipping git url', declaredVersion);
       return;
     }
-    ok = ok && utils.checkBowerDependency(dep, declaredVersion, verbose);
+    ok = ok && utils.checkBowerDependency(folder, dep, declaredVersion, verbose);
   });
 
   return ok;
