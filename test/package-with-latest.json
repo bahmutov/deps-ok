@@ -1,0 +1,9 @@
+{
+  "name": "test-package",
+  "description": "One dependency has latest keyword",
+  "version": "0.0.1",
+  "dependencies": {
+    "lodash": "latest",
+    "check-types": "1.3.2"
+  }
+}

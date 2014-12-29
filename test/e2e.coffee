@@ -20,3 +20,11 @@ gt.async 'test itself with folder', ->
 gt.async 'test itself with package.json path', ->
   gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, '../package.json')], 0,
     'this module has all dependencies'
+
+gt.async 'test version with latest keyword', ->
+  gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, './package-with-latest.json')], 1,
+    'this has some missing dependencies'
+
+gt.async 'test non-existing file', ->
+  gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, './does-not-exist.json')], 1,
+    'package file does not exist'
