@@ -40,9 +40,29 @@ var depsOk = require('deps-ok');
 var ok = depsOk(process.cwd(), false /* verbose */);
 ```
 
+## Use with gulp
+
+If you prefer using [gulp](), you can quickly just add a task
+
+```js
+gulp.task('deps-ok', function () {
+  var gutil = require('gulp-util');
+  var depsOk = require('deps-ok');
+  var ok = depsOk(process.cwd(), false /* verbose */);
+  if (!ok) {
+    gulp.emit('error', new gutil.PluginError('deps-ok', 'Found outdated installs'));
+  }
+});
+gulp.task('default', ['deps-ok', ...]);
+```
+
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013
+
+* [@bahmutov](https://twitter.com/bahmutov)
+* [glebbahmutov.com](http://glebbahmutov.com)
+* [blog](http://glebbahmutov.com/blog/)
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 

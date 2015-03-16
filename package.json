@@ -1,7 +1,7 @@
 {
   "name": "deps-ok",
   "description": "Fast checking of top level dependencies based on version numbers",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
   "bugs": {
@@ -38,7 +38,7 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "pre-commit": "npm test",
+  "pre-commit": ["npm test", "npm version"],
   "preferGlobal": true,
   "readmeFilename": "README.md",
   "repository": {
