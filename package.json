@@ -7,7 +7,7 @@
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
   },
-  "contributors": [],
+  "contributors": ["Tilman Potthof"],
   "dependencies": {
     "check-types": "1.4.0",
     "lodash": "2.4.1",
