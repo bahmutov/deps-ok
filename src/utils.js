@@ -3,6 +3,7 @@ var semver = require('semver');
 var check = require('check-types');
 var verify = check.verify;
 var join = require('path').join;
+var readFileSync = require('fs').readFileSync;
 var exists = require('fs').existsSync;
 
 function getPackage(packageFilename) {
@@ -92,7 +93,16 @@ function checkBowerDependency(folder, dep, version, verbose) {
   verify.unemptyString(folder, 'expected folder string, got ' + folder);
   verify.unemptyString(version, 'missing declared version for ' + dep);
 
-  var folder = join(folder, 'bower_components', dep);
+  var bowerComponentsPath = 'bower_components';
+  var bowerConfigPath = join(folder, '.bowerrc');
+
+  if (exists(bowerConfigPath)) {
+    // read .bowerjs without require because of the messing .json extension
+    var bowerConfig =  JSON.parse(readFileSync(bowerConfigPath, "utf8"));
+    bowerComponentsPath = bowerConfig.directory || bowerComponentsPath;
+  }
+
+  var folder = join(folder, bowerComponentsPath, dep);
   if (!exists(folder)) {
     console.error('ERROR: cannot find folder', folder);
     return false;
