@@ -108,16 +108,9 @@ function checkBowerDependency(folder, dep, version, verbose) {
     return false;
   }
 
-  var filename;
-  filename = join(folder, 'bower.json');
-  if (!exists(filename)) {
-    // some bower components use bower.json, some component.json
-    filename = join(folder, 'component.json');
-  }
-  if (!exists(filename)) {
-    // Backbone has only package.json
-    filename = join(folder, 'package.json');
-  }
+  // only check for the generated .bower.json file (see: https://github.com/bower/bower/issues/1174)
+  var filename = join(folder, '.bower.json');
+
   if (!exists(filename)) {
     console.error('ERROR: cannot find bower component json file in folder', folder);
     return false;
