@@ -1,13 +1,15 @@
 {
   "name": "deps-ok",
   "description": "Fast checking of top level dependencies based on version numbers",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
   },
-  "contributors": ["Tilman Potthof"],
+  "contributors": [
+    "Tilman Potthof"
+  ],
   "dependencies": {
     "check-types": "1.4.0",
     "lodash": "2.4.1",
