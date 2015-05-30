@@ -11,7 +11,7 @@ function isFile(path) {
     fs.statSync(path).isFile();
 }
 
-function checkDependenciesInFolder(folder, verbose) {
+function checkDependenciesInFolder(folder, verbose, skipBower) {
   verify.unemptyString(folder, 'missing folder string');
 
   if (isFile(folder)) {
@@ -30,11 +30,17 @@ function checkDependenciesInFolder(folder, verbose) {
     }
   }
 
-  var bowerFilename = join(folder, 'bower.json');
-  if (exists(bowerFilename)) {
-    foundFile = true;
-    if (!checkBower(folder, bowerFilename, verbose)) {
-      return false;
+  if (!skipBower) {
+    var bowerFilename = join(folder, 'bower.json');
+    if (exists(bowerFilename)) {
+      foundFile = true;
+      if (!checkBower(folder, bowerFilename, verbose)) {
+        return false;
+      }
+    }
+  } else {
+    if (verbose) {
+      console.log('skipping bower check');
     }
   }
 
