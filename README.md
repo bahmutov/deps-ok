@@ -8,6 +8,7 @@ Fast checking of top level NPM and Bower dependencies based on version numbers.
 [![dependencies][dependencies-image]][dependencies-url]
 [![devdependencies][deps-ok-devdependencies-image] ][deps-ok-devdependencies-url]
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
+[![semantic-release][semantic-image] ][semantic-url]
 
 See [grunt-deps-ok](https://github.com/bahmutov/grunt-deps-ok) for
 integrating this task into grunt pipeline.
@@ -88,3 +89,5 @@ Support: if you find any problems with this module, email / tweet / open issue o
 [deps-ok-devdependencies-url]: https://david-dm.org/bahmutov/deps-ok#info=devDependencies
 [endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
 [endorse-url]: https://coderwall.com/bahmutov
+[semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-url]: https://github.com/semantic-release/semantic-release

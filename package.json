@@ -1,9 +1,9 @@
 {
   "name": "deps-ok",
   "description": "Fast checking of top level dependencies based on version numbers",
-  "version": "0.11.1",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
+  "version": "0.0.0-semantic-release",
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
   },
@@ -25,7 +25,8 @@
     "grunt-nice-package": "0.9.6",
     "gt": "0.8.48",
     "jshint-summary": "0.4.0",
-    "pre-git": "1.4.0"
+    "pre-git": "1.4.0",
+    "semantic-release": "^4.3.5"
   },
   "engines": {
     "node": ">= 0.8.0"
@@ -59,7 +60,8 @@
     "e2e": "node ./node_modules/gt test/*.coffee --output",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",
-    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "config": {
     "pre-git": {
