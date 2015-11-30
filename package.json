@@ -47,13 +47,19 @@
     "type": "git",
     "url": "https://github.com/bahmutov/deps-ok.git"
   },
+  "files": [
+    "index.js",
+    "src",
+    "bin"
+  ],
   "scripts": {
     "test": "npm run itself && npm run unit && npm run e2e",
     "itself": "node index.js",
     "unit": "node ./node_modules/gt src/test/**/*.coffee --output",
     "e2e": "node ./node_modules/gt test/*.coffee --output",
     "commit": "git-issues && commit-wizard",
-    "issues": "git-issues"
+    "issues": "git-issues",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
   },
   "config": {
     "pre-git": {
@@ -61,7 +67,9 @@
       "pre-commit": [
         "npm test"
       ],
-      "pre-push": [],
+      "pre-push": [
+        "npm run size"
+      ],
       "post-commit": [],
       "post-merge": []
     }
