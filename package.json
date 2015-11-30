@@ -51,7 +51,8 @@
   "files": [
     "index.js",
     "src",
-    "bin"
+    "bin",
+    "!src/test"
   ],
   "scripts": {
     "test": "npm run itself && npm run unit && npm run e2e",
