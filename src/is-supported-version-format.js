@@ -12,13 +12,18 @@ function isVersionKeyword(str) {
   return str === '*' || str === 'latest';
 }
 
+function isGithubPackage(str) {
+  return /^github:/.test(str);
+}
+
 function isSupportedVersionFormat(version) {
   verify.unemptyString(version, 'expected version string');
 
   return !check.webUrl(version) &&
     !check.gitUrl(version) &&
     !isGitVersion(version) &&
-    !isVersionKeyword(version);
+    !isVersionKeyword(version) &&
+    !isGithubPackage(version);
 }
 
 module.exports = isSupportedVersionFormat;

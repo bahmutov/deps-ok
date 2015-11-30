@@ -25,6 +25,10 @@ gt.async 'test version with latest keyword', ->
   gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, './package-with-latest.json')], 1,
     'this has some missing dependencies'
 
+gt.async 'test version with github version', ->
+  gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, './package-with-github.json')], 0,
+    'this handles github: version string'
+
 gt.async 'test non-existing file', ->
   gt.exec 'node', ['../index.js', '--verbose', '--filename', join(__dirname, './does-not-exist.json')], 1,
     'package file does not exist'
