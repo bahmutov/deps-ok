@@ -26,7 +26,12 @@ function checkTopLevelNpmDependencies(filename, verbose) {
       console.log('skipping invalid version', declaredVersion);
       return;
     }
-    ok = ok && utils.checkNpmDependency(folder, dep, declaredVersion, verbose);
+    try {
+      ok = ok && utils.checkNpmDependency(folder, dep, declaredVersion, verbose);
+    } catch (err) {
+      console.error('Problem checking NPM dependency', dep, 'version', declaredVersion);
+      console.error(err.message);
+    }
   });
 
   return ok;

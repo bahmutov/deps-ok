@@ -7,18 +7,29 @@ Fast checking of top level NPM and Bower dependencies based on version numbers.
 [![Build status][ci-image]][ci-url]
 [![dependencies][dependencies-image]][dependencies-url]
 [![devdependencies][deps-ok-devdependencies-image] ][deps-ok-devdependencies-url]
+[![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 
-There is also [grunt-deps-ok](https://github.com/bahmutov/grunt-deps-ok) for
+See [grunt-deps-ok](https://github.com/bahmutov/grunt-deps-ok) for
 integrating this task into grunt pipeline.
 
-## Use
+## Install
+
+Install as a global tool
 
     npm install -g deps-ok
+
+Install as a project's dependency
+
+    npm install --save-dev deps-ok
+
+## Use as a global tool
+
+Checks modules until the first module without valid install.
+Prints first found error and exits with code 1 if one of the
+top level dependencies is missing or out of date.
+
     // from the package's root folder execute
     deps-ok
-    // prints first found error and exits with code 1
-    // if one of the top level dependencies
-    // is missing or out of date
 
     deps-ok --verbose
     // prints declared and installed version numbers
