@@ -3,7 +3,7 @@
   "description": "Fast checking of top level dependencies based on version numbers",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "index.js",
-  "version": "0.0.0-semantic-release",
+  "version": "1.0.1",
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
   },
