@@ -31,7 +31,6 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "gitHead": "a46441093a60dc95720c7b333d0a64f7ab0749b4",
   "homepage": "https://github.com/bahmutov/deps-ok",
   "keywords": [
     "npm",
