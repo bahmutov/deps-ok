@@ -5,6 +5,8 @@
 var argv = require('optimist').argv;
 var check = require('..');
 var path = require('path');
+var FAIL_EXIT_CODE = -1;
+var SUCCESS = 0;
 
 function isPackageJson(filename) {
   return /package\.json$/.test(filename);
@@ -17,7 +19,7 @@ function isBowerJson(filename) {
 if (argv.version) {
   var pkg = require('./package.json');
   console.log(pkg.name, pkg.version);
-  process.exit(0);
+  process.exit(SUCCESS);
   return;
 }
 
@@ -38,4 +40,4 @@ if (argv.verbose) {
   console.log('checking deps', dir);
 }
 var ok = check(dir, Boolean(argv.verbose));
-process.exit(ok ? 0 : 1);
+process.exit(ok ? SUCCESS : FAIL_EXIT_CODE);

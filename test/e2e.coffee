@@ -1,6 +1,7 @@
 join = require('path').join
 relative = join.bind(null, __dirname)
 check = require '..'
+ERROR_EXIT_CODE = 255
 
 gt.module 'e2e NPM tests in root folder',
   setup: ->
@@ -25,7 +26,7 @@ gt.async 'test itself with package.json path', ->
     'this module has all dependencies'
 
 gt.async 'test version with latest keyword', ->
-  gt.exec 'node', args.concat(relative('./package-with-latest.json')), 1,
+  gt.exec 'node', args.concat(relative('./package-with-latest.json')), ERROR_EXIT_CODE,
     'this has some missing dependencies'
 
 gt.async 'test version with github version', ->
@@ -33,5 +34,5 @@ gt.async 'test version with github version', ->
     'this handles github: version string'
 
 gt.async 'test non-existing file', ->
-  gt.exec 'node', args.concat(relative('./does-not-exist.json')), 1,
+  gt.exec 'node', args.concat(relative('./does-not-exist.json')), ERROR_EXIT_CODE,
     'package file does not exist'
