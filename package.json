@@ -2,7 +2,7 @@
   "name": "deps-ok",
   "description": "Fast checking of top level dependencies based on version numbers",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
-  "bin": "index.js",
+  "bin": "bin/deps-ok.js",
   "version": "0.0.0-semantic-release",
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
