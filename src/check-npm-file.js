@@ -1,3 +1,5 @@
+'use strict';
+
 var utils = require('./utils');
 var _ = require('lodash');
 var check = require('check-types');
@@ -12,6 +14,11 @@ function checkTopLevelNpmDependencies(filename, verbose) {
 
   var pkg = utils.getPackage(filename);
   var deps = utils.getAllDependencies(pkg);
+
+  if (typeof pkg.version === 'undefined') {
+    console.error('Missing version in the package file', filename);
+    return;
+  }
 
   if (verbose) {
     console.log(pkg.name + ' declares:\n' +

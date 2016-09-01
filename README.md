@@ -68,6 +68,11 @@ gulp.task('deps-ok', function () {
 gulp.task('default', ['deps-ok', ...]);
 ```
 
+## Notes
+
+This check will reject packages without "version" property in the `package.json`
+file.
+
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013

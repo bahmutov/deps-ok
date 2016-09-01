@@ -1,3 +1,5 @@
+'use strict';
+
 var verify = require('check-types').verify;
 var checkNpm = require('./check-npm-package');
 var checkBower = require('./check-bower-file');

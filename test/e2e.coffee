@@ -36,3 +36,7 @@ gt.async 'test version with github version', ->
 gt.async 'test non-existing file', ->
   gt.exec 'node', args.concat(relative('./does-not-exist.json')), ERROR_EXIT_CODE,
     'package file does not exist'
+
+gt.async 'package is missing version property', ->
+  gt.exec 'node', args.concat(relative('./package-without-version.json')), ERROR_EXIT_CODE,
+    'this has some missing dependencies'
