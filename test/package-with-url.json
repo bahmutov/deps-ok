@@ -1,0 +1,8 @@
+{
+  "name": "test-package",
+  "description": "One dependency has url",
+  "version": "0.0.1",
+  "dependencies": {
+    "bars": "https://github.com/jstrace/bars/archive/1.2.2.tar.gz"
+  }
+}

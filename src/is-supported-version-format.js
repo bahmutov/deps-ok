@@ -2,18 +2,18 @@ var check = require('check-types');
 var verify = check.verify;
 
 var gitAt = /^git@/;
-var startsWithGit = /^git:/;
+var startsWithPrefix = /^(git|github|file):/;
 
-function isGitVersion(str) {
-  return gitAt.test(str) || startsWithGit.test(str);
+function isGitAtVersion(str) {
+  return gitAt.test(str);
 }
 
 function isVersionKeyword(str) {
   return str === '*' || str === 'latest';
 }
 
-function isGithubPackage(str) {
-  return /^github:/.test(str);
+function isPrefixed(str) {
+  return startsWithPrefix.test(str);
 }
 
 function isSupportedVersionFormat(version) {
@@ -21,9 +21,9 @@ function isSupportedVersionFormat(version) {
 
   return !check.webUrl(version) &&
     !check.gitUrl(version) &&
-    !isGitVersion(version) &&
+    !isGitAtVersion(version) &&
     !isVersionKeyword(version) &&
-    !isGithubPackage(version);
+    !isPrefixed(version);
 }
 
 module.exports = isSupportedVersionFormat;
