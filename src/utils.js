@@ -63,11 +63,13 @@ function checkNpmDependency(folder, dep, version, verbose) {
 
   if (!installedDep) {
     console.error('ERROR: cannot find module', dep);
+    console.error('run `npm install` first?');
     return false;
   }
   var installedVersion = installedDep.version;
   if (!_.isString(installedVersion)) {
     console.error('ERROR: cannot version for module', dep);
+    console.error('run `npm install` first?');
     return false;
   }
 
