@@ -36,7 +36,8 @@ function checkTopLevelNpmDependencies(filename, verbose) {
     try {
       ok = ok && utils.checkNpmDependency(folder, dep, declaredVersion, verbose);
     } catch (err) {
-      console.error('Problem checking NPM dependency', dep, 'version', declaredVersion);
+      console.error('Problem checking NPM dependency "%s" version "%s"',
+        dep, declaredVersion);
       console.error(err.message);
     }
   });
