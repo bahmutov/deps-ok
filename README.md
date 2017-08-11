@@ -85,14 +85,14 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 
 Support: if you find any problems with this module, email / tweet / open issue on Github
 
-[ci-image]: https://travis-ci.org/bahmutov/deps-ok.png?branch=master
+[ci-image]: https://travis-ci.org/bahmutov/deps-ok.svg?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/deps-ok
-[nodei.co]: https://nodei.co/npm/deps-ok.png?downloads=true
-[dependencies-image]: https://david-dm.org/bahmutov/deps-ok.png
+[nodei.co]: https://nodei.co/npm/deps-ok.svg?downloads=true
+[dependencies-image]: https://david-dm.org/bahmutov/deps-ok.svg
 [dependencies-url]: https://david-dm.org/bahmutov/deps-ok
-[deps-ok-devdependencies-image]: https://david-dm.org/bahmutov/deps-ok/dev-status.png
+[deps-ok-devdependencies-image]: https://david-dm.org/bahmutov/deps-ok/dev-status.svg
 [deps-ok-devdependencies-url]: https://david-dm.org/bahmutov/deps-ok#info=devDependencies
-[endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.png
+[endorse-image]: https://api.coderwall.com/bahmutov/endorsecount.svg
 [endorse-url]: https://coderwall.com/bahmutov
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
