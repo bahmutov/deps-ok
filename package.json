@@ -3,7 +3,7 @@
   "description": "Fast checking of top level dependencies based on version numbers",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bin": "bin/deps-ok.js",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "bugs": {
     "url": "https://github.com/bahmutov/deps-ok/issues"
   },
@@ -27,7 +27,7 @@
     "gt": "0.10.0",
     "jshint-summary": "0.4.0",
     "pre-git": "1.4.0",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.6",
     "simple-commit-message": "^3.3.1"
   },
   "engines": {
