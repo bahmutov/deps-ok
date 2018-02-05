@@ -33,6 +33,14 @@ gt.async 'test version with github version', ->
   gt.exec 'node', args.concat(relative('./package-with-github.json')), 0,
     'this handles github: version string'
 
+gt.async 'test version with local file path', ->
+  gt.exec 'node', args.concat(relative('./package-with-file.json')), 0,
+    'this handles file: version string'
+
+gt.async 'test version with url', ->
+  gt.exec 'node', args.concat(relative('./package-with-url.json')), 0,
+    'this handles url string'
+
 gt.async 'test non-existing file', ->
   gt.exec 'node', args.concat(relative('./does-not-exist.json')), ERROR_EXIT_CODE,
     'package file does not exist'
