@@ -11,6 +11,9 @@ before_install:
   - npm i -g grunt-cli
 before_script:
   - npm prune
+script:
+  - npm run jest
+  - npm test
 after_success:
   - npm run semantic-release
 branches:

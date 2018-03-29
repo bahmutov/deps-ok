@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getAllDependencies ^ symbol 1`] = `
+Object {
+  "foo": "^0.1.0",
+}
+`;
+
+exports[`getAllDependencies duplicate 1`] = `"duplicate properties found: foo"`;
+
+exports[`getAllDependencies returns all 3 types 1`] = `
+Object {
+  "bar": "latest",
+  "baz": "2.0.0",
+  "foo": "0.1.0",
+}
+`;
