@@ -59,8 +59,7 @@
   "scripts": {
     "test": "npm run itself && npm run unit && npm run e2e",
     "itself": "node index.js",
-    "unit": "gt src/test/**/*.coffee --output",
-    "jest": "jest",
+    "unit": "jest",
     "e2e": "gt test/*.coffee --output",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",
