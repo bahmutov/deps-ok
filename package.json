@@ -27,7 +27,7 @@
     "gt": "0.10.0",
     "jshint-summary": "0.4.0",
     "pre-git": "3.17.1",
-    "semantic-release": "6.3.6",
+    "semantic-release": "15.1.4",
     "simple-commit-message": "4.0.3"
   },
   "engines": {
