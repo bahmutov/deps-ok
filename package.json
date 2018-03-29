@@ -54,7 +54,8 @@
     "index.js",
     "src",
     "bin",
-    "!src/test"
+    "!src/test",
+    "!src/__tests__"
   ],
   "scripts": {
     "test": "npm run itself && npm run unit && npm run e2e",
