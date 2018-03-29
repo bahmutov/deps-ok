@@ -1,11 +1,12 @@
 language: node_js
 cache:
   directories:
+    - ~/.npm
     - node_modules
 notifications:
   email: true
 node_js:
-  - '6'
+  - '8'
 before_install:
   - npm i -g grunt-cli
 before_script:
