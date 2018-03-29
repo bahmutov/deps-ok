@@ -1,0 +1,12 @@
+{
+  "name": "test bower file",
+  "version": "0.0.0",
+  "description": "Use to test dependency check",
+  "license": "private",
+  "private": true,
+  "ignore": [
+  ],
+  "dependencies": {
+    "lodash": "2.4.1"
+  }
+}
