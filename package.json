@@ -11,7 +11,9 @@
     "Tilman Potthof"
   ],
   "dependencies": {
+    "check-more-types": "2.24.0",
     "check-types": "1.4.0",
+    "lazy-ass": "1.6.0",
     "lodash": "4.17.5",
     "optimist": "0.6.1",
     "q": "2.0.3",
@@ -61,7 +63,7 @@
   "scripts": {
     "test": "npm run itself && npm run unit && npm run e2e",
     "itself": "node index.js",
-    "unit": "jest",
+    "unit": "jest src/__tests__",
     "e2e": "jest 'test/e2e.test.js'",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",

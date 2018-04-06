@@ -1,6 +1,8 @@
 'use strict';
 
-var verify = require('check-types').verify;
+const is = require('check-more-types');
+const la = require('lazy-ass')
+
 var checkNpm = require('./check-npm-package');
 var checkBower = require('./check-bower-file');
 var join = require('path').join;
@@ -14,7 +16,7 @@ function isFile(path) {
 }
 
 function checkDependenciesInFolder(folder, verbose, skipBower) {
-  verify.unemptyString(folder, 'missing folder string');
+  la(is.unemptyString(folder), 'missing folder string', folder)
 
   if (isFile(folder)) {
     if (verbose) {
