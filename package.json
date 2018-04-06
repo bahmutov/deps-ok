@@ -62,6 +62,7 @@
     "itself": "node index.js",
     "unit": "jest",
     "e2e": "gt test/*.coffee --output",
+    "e2e": "jest 'test/parent.test.js'",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
