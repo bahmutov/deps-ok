@@ -1,12 +1,12 @@
 var utils = require('./utils');
 var _ = require('lodash');
-var check = require('check-types');
-var verify = check.verify;
+var la = require('lazy-ass')
+var is = require('check-more-types');
 var join = require('path').join;
 var isSupportedVersionFormat = require('./is-supported-version-format');
 
 function checkTopLevelNpmDependencies(folder, verbose) {
-  verify.unemptyString(folder, 'missing folder string');
+  la(is.unemptyString(folder), 'missing folder string');
   var filename = join(folder, 'package.json');
 
   return require('./check-npm-file')(filename, verbose);

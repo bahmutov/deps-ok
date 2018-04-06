@@ -2,14 +2,14 @@
 
 var utils = require('./utils');
 var _ = require('lodash');
-var check = require('check-types');
-var verify = check.verify;
+var is = require('check-more-types');
+var la = require('lazy-ass')
 var path = require('path');
 var isSupportedVersionFormat = require('./is-supported-version-format');
 var fs = require('fs');
 
 function checkTopLevelNpmDependencies(filename, verbose) {
-  verify.unemptyString(filename, 'missing folder string');
+  la(is.unemptyString(filename), 'missing folder string');
   console.assert(fs.existsSync(filename), 'file ' + filename + ' not found');
 
   var pkg = utils.getPackage(filename);

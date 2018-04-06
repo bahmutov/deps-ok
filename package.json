@@ -12,7 +12,6 @@
   ],
   "dependencies": {
     "check-more-types": "2.24.0",
-    "check-types": "1.4.0",
     "lazy-ass": "1.6.0",
     "lodash": "4.17.5",
     "optimist": "0.6.1",
@@ -27,7 +26,6 @@
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.12.0",
     "grunt-nice-package": "0.10.4",
-    "gt": "0.10.0",
     "jest": "22.4.3",
     "jshint-summary": "0.4.0",
     "pre-git": "3.17.1",

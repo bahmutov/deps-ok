@@ -1,11 +1,12 @@
 var utils = require('./utils');
 var _ = require('lodash');
-var verify = require('check-types').verify;
+var is = require('check-more-types');
+var la = require('lazy-ass')
 var isSupportedVersionFormat = require('./is-supported-version-format');
 
 function checkBowerFile(folder, filename, verbose) {
-  verify.unemptyString(folder, 'missing bower folder');
-  verify.unemptyString(filename, 'missing bower filename');
+  la(is.unemptyString(folder), 'missing bower folder');
+  la(is.unemptyString(filename), 'missing bower filename');
 
   var pkg = require(filename);
   var deps = utils.getAllDependencies(pkg);

@@ -33,7 +33,7 @@ describe('e2e NPM tests in root folder', () => {
 })
 
 describe('e2e NPM tests in this folder', () => {
-  const args = ['../bin/deps-ok.js', '--verbose', '--filename']
+  const args = [relative('../bin/deps-ok.js'), '--verbose', '--filename']
 
   const options = {
     filter: 'code'
@@ -50,29 +50,32 @@ describe('e2e NPM tests in this folder', () => {
   })
 
   it('test version with latest keyword', () => {
-    return execaWrap('node', args.concat(relative('../package-with-latest.json')), options)
+    return execaWrap('node', args.concat(relative('./package-with-latest.json')), options)
     .then(expectError)
   })
 
   it('test version with github version', () => {
-    return execaWrap('node', args.concat(relative('../package-with-github.json')), options)
+    return execaWrap('node', args.concat(relative('./package-with-github.json')), options)
     .then(expectSuccess)
   })
 
   it('test version with local file path', () => {
-    return execaWrap('node', args.concat(relative('../package-with-file.json')), options)
+    return execaWrap('node', args.concat(relative('./package-with-file.json')), options)
     .then(expectSuccess)
   })
+
+  it('test version with url', () => {
+    return execaWrap('node', args.concat(relative('./package-with-url.json')), options)
+    .then(expectSuccess)
+  })
+
+  it('test non-existing file', () => {
+    return execaWrap('node', args.concat(relative('./does-not-exist.json')), options)
+    .then(expectError)
+  })
+
+  it('package is missing version property', () => {
+    return execaWrap('node', args.concat(relative('./package-without-version.json')), options)
+    .then(expectError)
+  })
 })
-
-// gt.async 'test version with url', ->
-//   gt.exec 'node', args.concat(relative('./package-with-url.json')), 0,
-//     'this handles url string'
-
-// gt.async 'test non-existing file', ->
-//   gt.exec 'node', args.concat(relative('./does-not-exist.json')), ERROR_EXIT_CODE,
-//     'package file does not exist'
-
-// gt.async 'package is missing version property', ->
-//   gt.exec 'node', args.concat(relative('./package-without-version.json')), ERROR_EXIT_CODE,
-//     'this has some missing dependencies'

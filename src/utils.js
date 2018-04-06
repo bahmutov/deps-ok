@@ -1,13 +1,15 @@
+'use strict'
+
 var _ = require('lodash');
 var semver = require('semver');
-var check = require('check-types');
-var verify = check.verify;
+var la = require('lazy-ass')
+var is = require('check-more-types');
 var join = require('path').join;
 var readFileSync = require('fs').readFileSync;
 var exists = require('fs').existsSync;
 
 function getPackage(packageFilename) {
-  verify.unemptyString(packageFilename, 'missing package filename');
+  la(is.unemptyString(packageFilename), 'missing package filename');
 
   if (!exists(packageFilename)) {
     console.error('cannot find file', packageFilename);
@@ -41,7 +43,7 @@ function getAllDependencies(pkg) {
 }
 
 function cleanVersion(version) {
-  verify.unemptyString(version, 'expecting version string');
+  la(is.unemptyString(version), 'expecting version string');
 
   version = version.trim();
   version = version.replace('~', '').replace('^', '');
@@ -55,8 +57,8 @@ function cleanVersion(version) {
 }
 
 function checkNpmDependency(folder, dep, version, verbose) {
-  verify.unemptyString(folder, 'expected folder string, got ' + folder);
-  verify.unemptyString(version, 'missing declared version for ' + dep);
+  la(is.unemptyString(folder), 'expected folder string, got', folder);
+  la(is.unemptyString(version), 'missing declared version for', dep);
 
   var filename = join(folder, 'node_modules', dep, 'package.json');
   var installedDep = getPackage(filename);
@@ -92,8 +94,8 @@ function checkNpmDependency(folder, dep, version, verbose) {
 }
 
 function checkBowerDependency(folder, dep, version, verbose) {
-  verify.unemptyString(folder, 'expected folder string, got ' + folder);
-  verify.unemptyString(version, 'missing declared version for ' + dep);
+  la(is.unemptyString(folder), 'expected folder string, got', folder);
+  la(is.unemptyString(version), 'missing declared version for', dep);
 
   var bowerComponentsPath = 'bower_components';
   var bowerConfigPath = join(folder, '.bowerrc');

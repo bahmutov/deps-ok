@@ -1,8 +1,12 @@
-var check = require('check-types');
-var verify = check.verify;
+var is = require('check-more-types');
+var la = require('lazy-ass')
 
 var gitAt = /^git@/;
 var startsWithPrefix = /^(git|github|file):/;
+
+function gitUrl (thing) {
+  return is.unemptyString(thing) && /^git\+(ssh|https?):\/\/.+/.test(thing);
+}
 
 function isGitAtVersion(str) {
   return gitAt.test(str);
@@ -17,10 +21,10 @@ function isPrefixed(str) {
 }
 
 function isSupportedVersionFormat(version) {
-  verify.unemptyString(version, 'expected version string');
+  la(is.unemptyString(version), 'expected version string');
 
-  return !check.webUrl(version) &&
-    !check.gitUrl(version) &&
+  return !is.webUrl(version) &&
+    !gitUrl(version) &&
     !isGitAtVersion(version) &&
     !isVersionKeyword(version) &&
     !isPrefixed(version);
