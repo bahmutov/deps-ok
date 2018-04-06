@@ -19,6 +19,7 @@
     "semver": "5.5.0"
   },
   "devDependencies": {
+    "execa-wrap": "1.3.0",
     "git-issues": "1.3.1",
     "github-post-release": "1.13.1",
     "grunt": "0.4.5",
@@ -61,8 +62,7 @@
     "test": "npm run itself && npm run unit && npm run e2e",
     "itself": "node index.js",
     "unit": "jest",
-    "e2e": "gt test/*.coffee --output",
-    "e2e": "jest 'test/parent.test.js'",
+    "e2e": "jest 'test/e2e.test.js'",
     "commit": "git-issues && commit-wizard",
     "issues": "git-issues",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
