@@ -5,6 +5,7 @@ const check = require('../check-bower-file')
 const testFolder = join(__dirname, 'bower-test')
 const bowerFilename = join(testFolder, 'bower.json')
 
+/* eslint-env jest */
 describe('running as parent tests', () => {
   beforeEach(() => {
     process.chdir(testFolder)

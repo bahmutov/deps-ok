@@ -1,7 +1,8 @@
 const join = require('path').join
 const check = require('..')
 
-describe.only('running as parent tests', () => {
+/* eslint-env jest */
+describe('running as parent tests', () => {
   beforeEach(() => {
     process.chdir(join(__dirname, '..'))
   })

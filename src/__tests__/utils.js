@@ -1,6 +1,7 @@
 const cleanVersion = require('../utils').cleanVersion
 const getAllDependencies = require('../utils').getAllDependencies
 
+/* eslint-env jest */
 describe('clean version', () => {
   it('^ symbol', () => {
     const version = cleanVersion('^0.1.1')
@@ -11,7 +12,7 @@ describe('clean version', () => {
 describe('getAllDependencies', () => {
   it('^ symbol', () => {
     const pkg = {
-      dependencies:{
+      dependencies: {
         foo: '^0.1.0'
       }
     }
@@ -21,7 +22,7 @@ describe('getAllDependencies', () => {
 
   it('returns all 3 types', () => {
     const pkg = {
-      dependencies:{
+      dependencies: {
         foo: '0.1.0'
       },
       devDependencies: {
@@ -62,4 +63,3 @@ describe('getAllDependencies', () => {
     getAllDependencies(pkg, options)
   })
 })
-

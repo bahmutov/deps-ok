@@ -3,8 +3,9 @@ const exists = require('fs').existsSync
 const check = require('../check-bower-file')
 
 const testFolder = join(__dirname, 'bower-non-standard-test')
-const bowerFilename =join(testFolder, 'bower.json')
+const bowerFilename = join(testFolder, 'bower.json')
 
+/* eslint-env jest */
 describe('running as parent tests', () => {
   beforeEach(() => {
     process.chdir(testFolder)

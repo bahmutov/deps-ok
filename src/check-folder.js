@@ -1,22 +1,22 @@
-'use strict';
+'use strict'
 
 const debug = require('debug')('deps-ok')
-const is = require('check-more-types');
+const is = require('check-more-types')
 const la = require('lazy-ass')
 
-var checkNpm = require('./check-npm-package');
-var checkBower = require('./check-bower-file');
-var join = require('path').join;
-var fs = require('fs');
-var exists = fs.existsSync;
-var quote = require('quote');
+var checkNpm = require('./check-npm-package')
+var checkBower = require('./check-bower-file')
+var join = require('path').join
+var fs = require('fs')
+var exists = fs.existsSync
+var quote = require('quote')
 
-function isFile(path) {
+function isFile (path) {
   return exists(path) &&
-    fs.statSync(path).isFile();
+    fs.statSync(path).isFile()
 }
 
-function checkDependenciesInFolder(folder, options) {
+function checkDependenciesInFolder (folder, options) {
   la(is.unemptyString(folder), 'missing folder string', folder)
   la(is.object(options), 'expected an options object', options)
 
@@ -27,40 +27,40 @@ function checkDependenciesInFolder(folder, options) {
 
   if (isFile(folder)) {
     if (verbose) {
-      console.log('assuming file', folder, 'is NPM package');
+      console.log('assuming file', folder, 'is NPM package')
     }
-    return require('./check-npm-file')(folder, options);
+    return require('./check-npm-file')(folder, options)
   }
 
-  var foundFile;
-  var packageFilename = join(folder, 'package.json');
+  var foundFile
+  var packageFilename = join(folder, 'package.json')
   if (exists(packageFilename)) {
-    foundFile = true;
+    foundFile = true
     if (!checkNpm(folder, options)) {
-      return false;
+      return false
     }
   }
 
   if (!skipBower) {
-    var bowerFilename = join(folder, 'bower.json');
+    var bowerFilename = join(folder, 'bower.json')
     if (exists(bowerFilename)) {
-      foundFile = true;
+      foundFile = true
       if (!checkBower(folder, bowerFilename, verbose)) {
-        return false;
+        return false
       }
     }
   } else {
     if (verbose) {
-      console.log('skipping bower check');
+      console.log('skipping bower check')
     }
   }
 
   if (!foundFile) {
-    console.error('Cannot find anything to check in', quote(folder));
-    return false;
+    console.error('Cannot find anything to check in', quote(folder))
+    return false
   }
 
-  return true;
+  return true
 }
 
-module.exports = checkDependenciesInFolder;
+module.exports = checkDependenciesInFolder

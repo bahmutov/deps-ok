@@ -1,5 +1,6 @@
 const isSupported = require('../is-supported-version-format')
 
+/* eslint-env jest */
 describe('is supported version format', () => {
   it('regular versions', () => {
     expect(isSupported('0.2.0')).toBe(true)
