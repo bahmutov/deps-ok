@@ -74,6 +74,10 @@ gulp.task('default', ['deps-ok', ...]);
 This check will reject packages without "version" property in the `package.json`
 file.
 
+## Debug
+
+See debug messages by running module with `DEBUG=deps-ok` environment variable
+
 ## Small print
 
 Author: Gleb Bahmutov &copy; 2013
