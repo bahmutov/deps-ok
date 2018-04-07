@@ -1,5 +1,6 @@
 'use strict';
 
+const debug = require('debug')('deps-ok')
 const is = require('check-more-types');
 const la = require('lazy-ass')
 
@@ -17,6 +18,7 @@ function isFile(path) {
 
 function checkDependenciesInFolder(folder, verbose, skipBower) {
   la(is.unemptyString(folder), 'missing folder string', folder)
+  debug('folder', folder)
 
   if (isFile(folder)) {
     if (verbose) {

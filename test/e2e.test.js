@@ -53,6 +53,14 @@ describe('e2e NPM tests in this folder', () => {
       return execaWrap('node', list, options)
       .then(expectSuccess)
     })
+
+    it.skip('allow seveal duplicates in dev and peer', () => {
+      const list = args.concat(packageFilename,
+        '--allow-duplicate', 'angular',
+        '--allow-duplicate', 'jquery')
+      return execaWrap('node', list, options)
+      .then(expectSuccess)
+    })
   })
 
   it('test itself with folder', () => {

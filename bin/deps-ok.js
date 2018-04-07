@@ -3,7 +3,10 @@
 'use strict'
 
 const debug = require('debug')('deps-ok')
-const argv = require('minimist')(process.argv.slice(2))
+const argv = require('minimist')(process.argv.slice(2), {
+  string: ['allow-duplicate', 'filename'],
+  boolean: ['version', 'verbose']
+})
 const check = require('..');
 const path = require('path');
 const FAIL_EXIT_CODE = -1;
@@ -20,6 +23,7 @@ function isBowerJson(filename) {
 }
 
 if (argv.version) {
+  debug('printing current package name and version')
   var pkg = require('./package.json');
   console.log(pkg.name, pkg.version);
   process.exit(SUCCESS);
@@ -46,5 +50,13 @@ if (argv.verbose) {
   console.log('checking deps', dir);
 }
 
-var ok = check(dir, Boolean(argv.verbose));
+const toArray = (a) => Array.isArray(a) ? a : [a]
+
+const options = {
+  verbose: argv.verbose,
+  skipBower: false,
+  allowDuplicate: toArray(argv['allow-duplicate'])
+}
+const ok = check(dir, Boolean(argv.verbose));
+debug('deps check finished with boolean %j', ok)
 process.exit(ok ? SUCCESS : FAIL_EXIT_CODE);
