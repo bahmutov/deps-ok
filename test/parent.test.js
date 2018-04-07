@@ -15,6 +15,9 @@ describe.only('running as parent tests', () => {
   })
 
   it('test itself via check', () => {
-    expect(check(process.cwd(), true)).toBe(true)
+    const options = {
+      verbose: true
+    }
+    expect(check(process.cwd(), options)).toBe(true)
   })
 })

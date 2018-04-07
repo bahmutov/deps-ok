@@ -46,5 +46,20 @@ describe('getAllDependencies', () => {
     }
     expect(() => getAllDependencies(pkg)).toThrowErrorMatchingSnapshot()
   })
+
+  it('allowed duplicate', () => {
+    const pkg = {
+      dependencies: {
+        foo: '0.1.0'
+      },
+      devDependencies: {
+        foo: '2.0.0'
+      }
+    }
+    const options = {
+      allowDuplicate: ['foo']
+    }
+    getAllDependencies(pkg, options)
+  })
 })
 

@@ -5,11 +5,11 @@ var is = require('check-more-types');
 var join = require('path').join;
 var isSupportedVersionFormat = require('./is-supported-version-format');
 
-function checkTopLevelNpmDependencies(folder, verbose) {
+function checkTopLevelNpmDependencies(folder, options) {
   la(is.unemptyString(folder), 'missing folder string');
   var filename = join(folder, 'package.json');
 
-  return require('./check-npm-file')(filename, verbose);
+  return require('./check-npm-file')(filename, options);
 }
 
 module.exports = checkTopLevelNpmDependencies;

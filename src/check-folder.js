@@ -29,14 +29,14 @@ function checkDependenciesInFolder(folder, options) {
     if (verbose) {
       console.log('assuming file', folder, 'is NPM package');
     }
-    return require('./check-npm-file')(folder, verbose);
+    return require('./check-npm-file')(folder, options);
   }
 
   var foundFile;
   var packageFilename = join(folder, 'package.json');
   if (exists(packageFilename)) {
     foundFile = true;
-    if (!checkNpm(folder, verbose)) {
+    if (!checkNpm(folder, options)) {
       return false;
     }
   }

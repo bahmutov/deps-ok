@@ -3,7 +3,7 @@
   "description": "same dependency in dev and in peer",
   "version": "0.0.1",
   "devDependencies": {
-    "angular": "1.0.0"
+    "angular": "1.6.0"
   },
   "peerDependencies": {
     "angular": "^1.0.0"

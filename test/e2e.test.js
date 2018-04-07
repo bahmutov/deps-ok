@@ -33,6 +33,14 @@ describe('e2e NPM tests in root folder', () => {
 })
 
 describe('e2e NPM tests in this folder', () => {
+  beforeEach(() => {
+    process.chdir(relative('..'))
+  })
+
+  afterEach(() => {
+    process.chdir(__dirname)
+  })
+
   const args = [relative('../bin/deps-ok.js'), '--verbose', '--filename']
 
   const options = {
@@ -48,16 +56,21 @@ describe('e2e NPM tests in this folder', () => {
       .then(expectError(1))
     })
 
-    it.skip('allow same named dependency in dev and peer', () => {
-      const list = args.concat(packageFilename, '--allow-duplicate', 'angular')
+    it('allow same named dependency in dev and peer', () => {
+      const list = args.concat(packageFilename,
+        '--allow-duplicate', 'angular',
+        '--skip-version-check'
+      )
       return execaWrap('node', list, options)
       .then(expectSuccess)
     })
 
-    it.skip('allow seveal duplicates in dev and peer', () => {
+    it('allow seveal duplicates in dev and peer', () => {
       const list = args.concat(packageFilename,
         '--allow-duplicate', 'angular',
-        '--allow-duplicate', 'jquery')
+        '--allow-duplicate', 'angular',
+        '--skip-version-check'
+      )
       return execaWrap('node', list, options)
       .then(expectSuccess)
     })

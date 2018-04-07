@@ -5,7 +5,9 @@
 const debug = require('debug')('deps-ok')
 const argv = require('minimist')(process.argv.slice(2), {
   string: ['allow-duplicate', 'filename'],
-  boolean: ['version', 'verbose']
+  boolean: ['version', 'verbose', 'skip-version-check']
+  // skip-version-check is used during end to end testing
+  // to not actually find the dependency on disk
 })
 const check = require('..');
 const path = require('path');
@@ -55,7 +57,8 @@ const toArray = (a) => Array.isArray(a) ? a : [a]
 const options = {
   verbose: argv.verbose,
   skipBower: false,
-  allowDuplicate: toArray(argv['allow-duplicate'])
+  allowDuplicate: toArray(argv['allow-duplicate']),
+  skipVersionCheck: argv['skip-version-check']
 }
 const ok = check(dir, options);
 debug('deps check finished with boolean %j', ok)

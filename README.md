@@ -69,6 +69,19 @@ gulp.task('deps-ok', function () {
 gulp.task('default', ['deps-ok', ...]);
 ```
 
+## Options
+
+* `--allow-duplicate <name>` allows same dependency to be declared in dev and peer dependencies (or other combinations). Useful if you are developing a plugin that requires the main tool (peer) but also uses the main tool for testing (dev).
+
+```
+$ deps-ok --allow-duplicate angular
+$ deps-ok --allow-duplicate angular --allow-duplicate jquery
+```
+
+* `--verbose` prints verbose console messages, but using `DEBUG=deps-ok` is a better method
+
+* `--skip-version-check` is used to load and check versions but skip actual physical file checks. Useful in end to end testing.
+
 ## Notes
 
 This check will reject packages without "version" property in the `package.json`

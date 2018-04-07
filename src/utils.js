@@ -1,5 +1,6 @@
 'use strict'
 
+const debug = require('debug')('deps-ok')
 var _ = require('lodash');
 var semver = require('semver');
 var la = require('lazy-ass')
@@ -23,8 +24,16 @@ function getPackage(packageFilename) {
   return pkg;
 }
 
-function getAllDependencies(pkg) {
+function getAllDependencies(pkg, options = {}) {
+  la(is.object(options), 'missing options', options)
+
+  const allowedDuplicates = Array.isArray(options.allowDuplicate)
+    ? options.allowDuplicate : []
+  const isAllowedDuplicate = (name) => _.includes(allowedDuplicates, name)
+
   var deps = {};
+  // note that peer dependencies overwrite prod and dev dependencies
+  // because peer is usually more relaxed
   var properties = [
     'dependencies', 'devDependencies', 'peerDependencies'
   ];
@@ -33,9 +42,15 @@ function getAllDependencies(pkg) {
       return;
     }
 
-    var common = _.intersection(_.keys(deps), _.keys(pkg[name]));
-    if (common.length) {
-      throw new Error('duplicate properties found: ' + common);
+    debug('checking %s', name)
+    const common = _.intersection(_.keys(deps), _.keys(pkg[name]));
+    debug('duplicate dependencies', common)
+    const remaining = _.filter(common, name => !isAllowedDuplicate(name))
+    debug('allowed duplicate dependencies', allowedDuplicates)
+    debug('remaining duplicates', remaining)
+
+    if (remaining.length) {
+      throw new Error('duplicate properties found: ' + remaining);
     }
     deps = _.extend(deps, pkg[name]);
   });
