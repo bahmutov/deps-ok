@@ -6,12 +6,12 @@ const execaWrap = require('execa-wrap')
 
 const expectSuccess = (output) => {
   output = output.trim()
-  expect(output).toBe("code: 0")
+  expect(output).toContain("code: 0")
 }
 
-const expectError = (output) => {
+const expectError = (code) => (output) => {
   output = output.trim()
-  expect(output).toBe(`code: ${ERROR_EXIT_CODE}`)
+  expect(output).toContain(`code: ${code}`)
 }
 
 describe('e2e NPM tests in root folder', () => {
@@ -36,8 +36,24 @@ describe('e2e NPM tests in this folder', () => {
   const args = [relative('../bin/deps-ok.js'), '--verbose', '--filename']
 
   const options = {
-    filter: 'code'
+    filter: ['code', 'stdout', 'stderr']
   }
+
+  describe('peer dependency', () => {
+    const packageFilename = relative('./package-dev-and-peer.json')
+
+    it('does not allow same dependency in dev and peer by default', () => {
+      const list = args.concat(packageFilename)
+      return execaWrap('node', list, options)
+      .then(expectError(1))
+    })
+
+    it.skip('allow same named dependency in dev and peer', () => {
+      const list = args.concat(packageFilename, '--allow-duplicate', 'angular')
+      return execaWrap('node', list, options)
+      .then(expectSuccess)
+    })
+  })
 
   it('test itself with folder', () => {
     return execaWrap('node', args.concat(relative('..')), options)
@@ -51,7 +67,7 @@ describe('e2e NPM tests in this folder', () => {
 
   it('test version with latest keyword', () => {
     return execaWrap('node', args.concat(relative('./package-with-latest.json')), options)
-    .then(expectError)
+    .then(expectError(ERROR_EXIT_CODE))
   })
 
   it('test version with github version', () => {
@@ -76,6 +92,6 @@ describe('e2e NPM tests in this folder', () => {
 
   it('package is missing version property', () => {
     return execaWrap('node', args.concat(relative('./package-without-version.json')), options)
-    .then(expectError)
+    .then(expectError(ERROR_EXIT_CODE))
   })
 })

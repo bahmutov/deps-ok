@@ -1,0 +1,11 @@
+{
+  "name": "test-package",
+  "description": "same dependency in dev and in peer",
+  "version": "0.0.1",
+  "devDependencies": {
+    "angular": "1.0.0"
+  },
+  "peerDependencies": {
+    "angular": "^1.0.0"
+  }
+}
