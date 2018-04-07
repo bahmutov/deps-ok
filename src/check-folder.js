@@ -16,9 +16,14 @@ function isFile(path) {
     fs.statSync(path).isFile();
 }
 
-function checkDependenciesInFolder(folder, verbose, skipBower) {
+function checkDependenciesInFolder(folder, options) {
   la(is.unemptyString(folder), 'missing folder string', folder)
+  la(is.object(options), 'expected an options object', options)
+
   debug('folder', folder)
+  debug('options', options)
+  const verbose = options.verbose
+  const skipBower = options.skipBower
 
   if (isFile(folder)) {
     if (verbose) {

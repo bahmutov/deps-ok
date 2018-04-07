@@ -57,6 +57,6 @@ const options = {
   skipBower: false,
   allowDuplicate: toArray(argv['allow-duplicate'])
 }
-const ok = check(dir, Boolean(argv.verbose));
+const ok = check(dir, options);
 debug('deps check finished with boolean %j', ok)
 process.exit(ok ? SUCCESS : FAIL_EXIT_CODE);
