@@ -25,7 +25,7 @@
     "git-issues": "1.3.1",
     "grunt": "0.4.5",
     "grunt-nice-package": "0.10.4",
-    "jest": "22.4.3",
+    "jest": "22.4.4",
     "jshint-summary": "0.4.0",
     "pre-git": "3.17.1",
     "semantic-release": "15.4.1",
