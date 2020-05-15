@@ -30,7 +30,7 @@
     "pre-git": "3.17.1",
     "semantic-release": "15.13.12",
     "simple-commit-message": "4.0.3",
-    "standard": "11.0.1"
+    "standard": "14.3.4"
   },
   "engines": {
     "node": ">= 0.8.0"
