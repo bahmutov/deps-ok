@@ -9,11 +9,13 @@ var join = require('path').join
 var readFileSync = require('fs').readFileSync
 var exists = require('fs').existsSync
 
-function getPackage (packageFilename) {
+function getPackage (packageFilename, verbose) {
   la(is.unemptyString(packageFilename), 'missing package filename')
 
   if (!exists(packageFilename)) {
-    console.error('cannot find file', packageFilename)
+    if (verbose) {
+      console.error('cannot find file', packageFilename)
+    }
     return
   }
 
@@ -76,17 +78,21 @@ function checkNpmDependency (folder, dep, version, verbose) {
   la(is.unemptyString(version), 'missing declared version for', dep)
 
   var filename = join(folder, 'node_modules', dep, 'package.json')
-  var installedDep = getPackage(filename)
+  var installedDep = getPackage(filename, verbose)
 
   if (!installedDep) {
-    console.error('ERROR: cannot find module', dep)
-    console.error('run `npm install` first?')
+    if (verbose) {
+      console.error('ERROR: cannot find module', dep)
+      console.error('run `npm install` first?')
+    }
     return false
   }
   var installedVersion = installedDep.version
   if (!_.isString(installedVersion)) {
-    console.error('ERROR: cannot version for module', dep)
-    console.error('run `npm install` first?')
+    if (verbose) {
+      console.error('ERROR: cannot version for module', dep)
+      console.error('run `npm install` first?')
+    }
     return false
   }
 

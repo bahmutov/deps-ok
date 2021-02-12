@@ -40,7 +40,9 @@ function checkTopLevelNpmDependencies (filename, options) {
   var ok = true
   _.forOwn(deps, function (declaredVersion, dep) {
     if (!isSupportedVersionFormat(declaredVersion)) {
-      console.log('skipping invalid version', declaredVersion)
+      if (verbose) {
+        console.log('skipping invalid version', declaredVersion)
+      }
       return
     }
     try {
