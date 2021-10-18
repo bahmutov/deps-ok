@@ -29,7 +29,7 @@
     "jshint-summary": "0.4.0",
     "pre-git": "3.17.1",
     "semantic-release": "15.14.0",
-    "simple-commit-message": "4.1.1",
+    "simple-commit-message": "4.1.3",
     "standard": "11.0.1"
   },
   "engines": {
