@@ -13,7 +13,7 @@
   "dependencies": {
     "check-more-types": "2.24.0",
     "debug": "3.2.7",
-    "lazy-ass": "1.6.0",
+    "lazy-ass": "2.0.3",
     "lodash": "4.17.20",
     "minimist": "1.2.5",
     "q": "2.0.3",
